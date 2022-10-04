@@ -97,7 +97,7 @@ def my_dag_db():
 
 
         query = r"""select * from {}""".format(default_args['table_name'])
-        sl_hook = SqliteHook(sqlite_conn_id='sqlite_default')
+        sl_hook = SqliteHook(connection='postgres_first')
         result = sl_hook.run(query)
         LoggingMixin().log.info(result)
 
