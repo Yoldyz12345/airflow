@@ -35,6 +35,7 @@ def my_dag_db():
 
     create_table = PostgresOperator(
         task_id = "create_db",
+        postgres_conn_id='postgres_localhost',
         sql=r"""create table if not exists {} (
             _id int primary key,
             user_id text,
