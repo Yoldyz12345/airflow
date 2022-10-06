@@ -85,7 +85,7 @@ def my_dag_db():
                                     values (?, ?, ?, ?, ?);
                                     """.format(default_args['table_name'])
                     #sl_hook = SqliteHook(sqlite_conn_id='sqlite_default')
-                    sl_hook = PostgresHook(connection='postgres_first')
+                    sl_hook = PostgresHook(connection='postgres_localhost')
                     sl_hook.run(query, parameters=(default_args['user_id'],
                                                    default_args['task_id'], value, key, 1))
 
@@ -97,7 +97,7 @@ def my_dag_db():
 
 
         query = r"""select * from {}""".format(default_args['table_name'])
-        sl_hook = PostgresHook(connection='postgres_first')
+        sl_hook = PostgresHook(connection='postgres_localhost')
         result = sl_hook.run(query)
         LoggingMixin().log.info(result)
 
